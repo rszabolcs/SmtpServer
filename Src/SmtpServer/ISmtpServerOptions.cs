@@ -83,5 +83,10 @@ namespace SmtpServer
         /// The logger instance to use.
         /// </summary>
         ILogger Logger { get; }
+
+        /// <summary>
+        /// Force TLS connection
+        /// </summary>
+        bool ForceSecureConnection { get; }
     }
 }

@@ -85,6 +85,11 @@ namespace SmtpServer.Protocol
                 WaitingForMail.Add(StartTlsCommand.Command, TryMakeStartTls, SmtpState.WaitingForMailSecure);
             }
 
+            if (options.ForceSecureConnection)
+            {
+                WaitingForMail.Replace(MailCommand.Command, MakeResponse(SmtpResponse.SecureConnectionRequired));
+            }
+
             _stateTable.Initialize(SmtpState.Initialized);
         }
 

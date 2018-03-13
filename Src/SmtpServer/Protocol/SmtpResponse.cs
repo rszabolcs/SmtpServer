@@ -15,6 +15,7 @@
         public static readonly SmtpResponse TransactionFailed = new SmtpResponse(SmtpReplyCode.TransactionFailed);
         public static readonly SmtpResponse BadSequence = new SmtpResponse(SmtpReplyCode.BadSequence, "bad sequence of commands");
         public static SmtpResponse AuthenticationRequired = new SmtpResponse(SmtpReplyCode.AuthenticationRequired, "authentication required");
+        public static readonly SmtpResponse SecureConnectionRequired = new SmtpResponse(SmtpReplyCode.TransactionFailed, "Secure connection required");
 
         /// <summary>
         /// Constructor.

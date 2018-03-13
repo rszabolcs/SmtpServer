@@ -29,6 +29,7 @@ namespace SmtpServer
                 NetworkBufferReadTimeout = TimeSpan.FromMinutes(2),
                 CommandWaitTimeout = TimeSpan.FromMinutes(5),
                 Logger = new NullLogger(),
+                ForceSecureConnection = false
             };
 
             _setters.ForEach(setter => setter(serverOptions));
@@ -244,6 +245,13 @@ namespace SmtpServer
             return this;
         }
 
+        public SmtpServerOptionsBuilder ForceSecureConnection(bool force)
+        {
+            _setters.Add(options => options.ForceSecureConnection = force);
+
+            return this;
+        }
+
         #region SmtpServerOptions
 
         class SmtpServerOptions : ISmtpServerOptions
@@ -327,6 +335,11 @@ namespace SmtpServer
             /// The logger instance to use.
             /// </summary>
             public ILogger Logger { get; set; }
+
+            /// <summary>
+            /// Force TLS connection
+            /// </summary>
+            public bool ForceSecureConnection { get; internal set; }
         }
 
         #endregion
